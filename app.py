@@ -1,6 +1,7 @@
 from mongoengine import connect
 from mongoengine.errors import NotUniqueError
-from orm.user import User
+from odm.posts import Posts
+from odm.user import User
 
 connect(
     db = "project1",
@@ -18,13 +19,22 @@ connect(
 #     print("Email already exists")
 
 
-# Update
-user = User.objects(email = "afsar@easemyai.com")
-user.update(first_name="Ishtiyaque", last_name="Hussain")
+# # Update
+# user = User.objects(email = "afsar@easemyai.com")
+# user.update(first_name="Ishtiyaque", last_name="Hussain")
 
-user2 = User.objects(email = "afsar@easemyai.com")
-fields = {
-    "first_name": "Afsar",
-    "last_name": "Khan"
-}
-user2.update(**fields)
+# user2 = User.objects(email = "afsar@easemyai.com")
+# fields = {
+#     "first_name": "Afsar",
+#     "last_name": "Khan"
+# }
+# user2.update(**fields)
+
+
+
+post = Posts()
+post.title = "Hello World"
+post.url = "hello-world"
+post.content = "World is nice! :)"
+post.status = "pending"
+post.save()
